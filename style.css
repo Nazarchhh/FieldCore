@@ -1,0 +1,1506 @@
+/* ==========================================================
+   FIELDCORE — стилі
+   Зміст:
+   1. Змінні (кольори, шрифти)   7. Каталог і картки товарів
+   2. Базові стилі               8. Переваги, «Про нас», контакти
+   3. Кнопки та форми            9. Футер
+   4. Шапка                     10. Кошик (бокова панель)
+   5. Головний екран (hero)     11. Сторінка товару
+   6. Секції                    12. Анімації та адаптивність
+   ========================================================== */
+
+
+/* ---------- 1. Змінні ----------
+   Змінили колір тут — він змінився на всьому сайті. */
+:root {
+    --bg: #12160f;
+    --bg-alt: #151a12;
+    --bg-header: #0e120c;
+    --surface: #1a2018;
+    --line: #2c3627;
+    --line-strong: #3c4938;
+
+    --text: #e8ece0;
+    --text-soft: #cfd7c3;
+    --muted: #a3ad98;
+    --heading: #e8f0da;
+
+    --accent: #a5c77a;
+    --accent-hover: #c4dda0;
+    --accent-contrast: #12160f;
+    --sand: #c8a96a;
+    --danger: #ff9b8a;
+    --photo-bg: #b9bfa9;
+
+    --font-heading: "Oswald", "Arial Narrow", Impact, sans-serif;
+    --font-body: "Inter", Arial, sans-serif;
+
+    --radius: 4px;
+    --container: 1200px;
+}
+
+
+/* ---------- 2. Базові стилі ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px; /* щоб липка шапка не закривала заголовки при переході за якорем */
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.no-scroll {
+    overflow: hidden; /* поки відкритий кошик, сторінка під ним не прокручується */
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    color: var(--heading);
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0;
+}
+
+/* Видима рамка фокуса для клавіатурної навігації */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #d4e3c0;
+    outline-offset: 3px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.small {
+    font-size: 14px;
+}
+
+.accent {
+    color: var(--accent);
+}
+
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -60px;
+    z-index: 2000;
+    padding: 12px 18px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-weight: 600;
+    border-radius: var(--radius);
+}
+
+.skip-link:focus {
+    top: 16px;
+    color: var(--accent-contrast);
+}
+
+
+/* ---------- 3. Кнопки та форми ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-large {
+    min-height: 56px;
+    padding: 0 32px;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+    color: var(--accent-contrast);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--heading);
+}
+
+.btn-outline:hover:not(:disabled) {
+    background-color: rgba(165, 199, 122, 0.12);
+    color: var(--heading);
+}
+
+.btn:disabled,
+.buy-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.icon-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.link-button {
+    min-height: 44px;
+    padding: 0 8px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: var(--accent);
+}
+
+/* Поля форм */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 16px;
+}
+
+.field textarea {
+    padding: 14px 16px;
+    resize: vertical;
+}
+
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+.field-error {
+    margin: 0;
+    color: var(--danger);
+    font-size: 14px;
+}
+
+.field-error:empty {
+    display: none;
+}
+
+
+/* ---------- 4. Шапка ---------- */
+.topbar {
+    padding: 10px 16px;
+    background-color: var(--sand);
+    color: var(--accent-contrast);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--bg-header);
+    border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    min-height: 76px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+}
+
+.logo:hover {
+    color: var(--accent-hover);
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
+
+.main-nav a {
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+    color: var(--accent);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 20px;
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cart-button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    background-color: var(--bg);
+    color: var(--accent);
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+
+/* ---------- 5. Головний екран (hero) ---------- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 680px;
+    background:
+        linear-gradient(90deg, rgba(14, 18, 12, 0.93) 0%, rgba(14, 18, 12, 0.7) 48%, rgba(14, 18, 12, 0.25) 100%),
+        url("images/hero.jpg") center / cover no-repeat;
+}
+
+.hero-main {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 640px;
+    padding: 72px 0;
+}
+
+.eyebrow {
+    margin-bottom: 14px;
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    color: var(--sand);
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+    font-size: clamp(40px, 7vw, 76px);
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+}
+
+.hero-text {
+    max-width: 520px;
+    margin-bottom: 36px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--text-soft);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.perks {
+    background-color: rgba(10, 13, 8, 0.82);
+    border-top: 1px solid var(--line);
+}
+
+.perks-inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.perk {
+    display: flex;
+    flex: 1 1 260px;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.perk svg {
+    flex-shrink: 0;
+    color: var(--accent);
+}
+
+
+/* ---------- 6. Секції ---------- */
+.section {
+    padding: 96px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-alt {
+    background-color: var(--bg-alt);
+}
+
+.section-head {
+    margin-bottom: 40px;
+}
+
+.section-head-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.section h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+}
+
+.section-lead {
+    margin-top: 10px;
+    color: var(--muted);
+}
+
+
+/* ---------- 7. Каталог і картки товарів ---------- */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    min-height: 44px;
+    padding: 0 20px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    border-radius: 22px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+}
+
+.chip[aria-pressed="true"] {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+    font-weight: 600;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px 24px;
+    margin-bottom: 32px;
+}
+
+.toolbar-search {
+    flex: 1 1 280px;
+    max-width: 420px;
+}
+
+.toolbar-sort {
+    flex: 0 1 240px;
+}
+
+.results-count {
+    margin-left: auto;
+    padding-bottom: 14px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.product-card {
+    display: flex;
+    flex: 1 1 320px;
+    min-width: 0;
+    max-width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.product-media {
+    position: relative;
+    display: block;
+    height: 300px;
+    overflow: hidden;
+    background-color: var(--photo-bg);
+}
+
+.product-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-media img {
+    transform: scale(1.04);
+}
+
+/* Фото на білому тлі «вписуємо» в оливковий фон картки */
+.is-contain {
+    object-fit: contain !important;
+    mix-blend-mode: multiply;
+}
+
+.badge,
+.sku {
+    position: absolute;
+    top: 14px;
+    padding: 6px 10px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.badge {
+    left: 14px;
+}
+
+.badge-accent {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.badge-sand {
+    background-color: var(--sand);
+    color: var(--accent-contrast);
+}
+
+.sku {
+    right: 14px;
+    background-color: rgba(14, 18, 12, 0.85);
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+.product-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+}
+
+.product-category {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--sand);
+    text-transform: uppercase;
+}
+
+.product-body h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.product-body h3 a:hover {
+    color: var(--accent);
+}
+
+.product-short {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 14px;
+}
+
+.price {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.stock {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.stock-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent);
+}
+
+.stock.is-out .stock-dot {
+    background-color: var(--danger);
+}
+
+.buy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    margin-top: 8px;
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buy-button:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+    color: var(--accent-contrast);
+    transform: translateY(-2px);
+}
+
+.catalog-empty,
+.not-found {
+    padding: 48px 0;
+    text-align: center;
+}
+
+.catalog-empty .btn {
+    margin-top: 20px;
+}
+
+.empty-title {
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+/* ---------- 8. Переваги, «Про нас», контакти ---------- */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.feature {
+    flex: 1 1 240px;
+    min-width: 0;
+    padding-top: 24px;
+    border-top: 2px solid var(--accent);
+}
+
+.feature svg {
+    color: var(--accent);
+}
+
+.feature h3 {
+    margin: 16px 0 10px;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.feature p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.about-inner,
+.contacts-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+}
+
+.about-inner {
+    align-items: center;
+}
+
+.about-text,
+.contacts-text {
+    flex: 1 1 440px;
+    min-width: 0;
+}
+
+.about-text h2,
+.contacts-text h2 {
+    margin-bottom: 24px;
+}
+
+.about-text p,
+.contacts-text > p {
+    margin-bottom: 16px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-soft);
+}
+
+.about-text .muted,
+.contacts-text .muted {
+    color: var(--muted);
+}
+
+.about-text .btn {
+    margin-top: 16px;
+}
+
+.about-photo {
+    flex: 1 1 440px;
+    min-width: 0;
+    height: 420px;
+    background: url("images/hero.jpg") 72% center / cover no-repeat;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px 0 0;
+    color: var(--text-soft);
+}
+
+.contact-list dt {
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--sand);
+}
+
+.contact-list dd {
+    margin: 0;
+}
+
+.card-form {
+    display: flex;
+    flex: 1 1 440px;
+    min-width: 0;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.form-status {
+    color: var(--accent);
+    font-size: 15px;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+
+/* ---------- 9. Футер ---------- */
+.site-footer {
+    padding: 56px 0 32px;
+    background-color: var(--bg-header);
+    border-top: 1px solid var(--line);
+}
+
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line);
+}
+
+.footer-brand {
+    flex: 1 1 280px;
+    max-width: 380px;
+}
+
+.footer-brand .logo {
+    margin-bottom: 14px;
+}
+
+.footer-brand p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.footer-nav a {
+    padding: 6px 0;
+    font-size: 15px;
+    color: var(--text-soft);
+}
+
+.footer-nav a:hover {
+    color: var(--accent);
+}
+
+.footer-title {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--sand);
+}
+
+.footer-bottom {
+    padding-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+
+/* ---------- 10. Кошик (бокова панель) ---------- */
+.cart-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cart-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(480px, 100%);
+    height: 100%;
+    background-color: var(--surface);
+    border-left: 1px solid var(--accent);
+    animation: slide-in 0.3s ease;
+}
+
+.cart-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--line);
+}
+
+.cart-head h2 {
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.cart-view {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 28px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.cart-thumb {
+    display: block;
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    overflow: hidden;
+    background-color: var(--photo-bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+}
+
+.cart-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-info {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cart-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--heading);
+    overflow-wrap: anywhere;
+}
+
+.cart-line-price {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.cart-meta {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.cart-controls {
+    align-items: center;
+    margin-top: auto;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+}
+
+.qty-button {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.qty-button:hover:not(:disabled) {
+    color: var(--accent);
+}
+
+.qty-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.qty-value {
+    min-width: 32px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 56px 0;
+    text-align: center;
+}
+
+.empty-cart .btn {
+    margin-top: 12px;
+}
+
+.cart-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 28px 28px;
+    background-color: var(--bg-alt);
+    border-top: 1px solid var(--line);
+}
+
+.cart-total {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.cart-total span {
+    color: var(--muted);
+}
+
+.cart-total strong {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.cart-total strong span {
+    color: inherit;
+}
+
+.checkout-form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 28px 28px;
+    overflow-y: auto;
+}
+
+.checkout-summary {
+    padding: 14px 16px;
+    background-color: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--text-soft);
+}
+
+.checkout-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.success-box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 40px 28px;
+    text-align: center;
+}
+
+.success-box svg {
+    color: var(--accent);
+}
+
+.success-box h3 {
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.success-box .btn {
+    margin-top: 12px;
+}
+
+/* Спливаюче повідомлення */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 1100;
+    width: max-content;
+    max-width: calc(100% - 32px);
+    text-align: center;
+    padding: 14px 22px;
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+
+/* ---------- 11. Сторінка товару ---------- */
+.product-page {
+    border-top: none;
+    padding: 40px 0 96px;
+}
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent);
+}
+
+.breadcrumbs [aria-current="page"] {
+    color: var(--text);
+}
+
+.product-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+}
+
+.product-gallery {
+    position: relative;
+    flex: 1 1 440px;
+    min-width: 0;
+    height: 520px;
+    overflow: hidden;
+    background-color: var(--photo-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.product-gallery img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    flex: 1 1 440px;
+    min-width: 0;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.product-info h1 {
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+}
+
+.product-sku {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.product-price {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.product-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-soft);
+}
+
+.size-picker {
+    margin: 8px 0 0;
+    padding: 0;
+    border: none;
+}
+
+.size-picker legend {
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.size-option {
+    position: relative;
+}
+
+.size-option input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.size-option span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 56px;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.size-option:hover span {
+    border-color: var(--accent);
+}
+
+.size-option input:checked + span {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.size-option input:focus-visible + span {
+    outline: 3px solid #d4e3c0;
+    outline-offset: 3px;
+}
+
+.product-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.specs {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 24px;
+    margin: 16px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+
+.specs dt {
+    color: var(--muted);
+}
+
+.specs dd {
+    margin: 0;
+}
+
+.related {
+    margin-top: 96px;
+}
+
+.related h2 {
+    margin-bottom: 32px;
+    font-size: 30px;
+}
+
+
+/* ---------- 12. Анімації та адаптивність ---------- */
+
+/* Поява блоків при прокручуванні. Працює лише коли JS увімкнено (клас .js на <html>),
+   тому без JS нічого не лишиться невидимим. */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.js .product-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.4s ease, border-color 0.3s ease;
+}
+
+.js .reveal.show,
+.js .product-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.js .product-card.show:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Планшети та телефони */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .header-inner {
+        column-gap: 12px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+
+    /* Кошик і пошук лишаються праворуч від логотипу в одному рядку */
+    .header-actions {
+        margin-left: auto;
+    }
+
+    .cart-button {
+        padding: 0 14px;
+    }
+
+    /* Меню переходить на окремий рядок під логотипом і кошиком */
+    .main-nav {
+        order: 3;
+        flex: 1 0 100%;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .main-nav a {
+        padding: 10px 12px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .cart-label {
+        display: none;
+    }
+
+    .hero {
+        min-height: 560px;
+    }
+
+    .hero-content {
+        padding: 48px 0;
+    }
+
+    .hero-text {
+        font-size: 17px;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .product-media {
+        height: 240px;
+    }
+
+    .about-photo {
+        height: 300px;
+    }
+
+    .card-form {
+        padding: 24px 20px;
+    }
+
+    .results-count {
+        margin-left: 0;
+        padding-bottom: 0;
+    }
+
+    .product-gallery {
+        height: 340px;
+    }
+
+    .product-price {
+        font-size: 34px;
+    }
+
+    .product-actions .btn {
+        flex: 1 1 100%;
+    }
+
+    .cart-head,
+    .cart-items,
+    .cart-foot,
+    .checkout-form {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Користувачі, яких дратує анімація, її не побачать */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+    .js .reveal,
+    .js .product-card {
+        opacity: 1;
+        transform: none;
+    }
+}

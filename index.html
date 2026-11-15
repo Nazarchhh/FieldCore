@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIELDCORE — тактичне спорядження</title>
+    <meta name="description" content="FIELDCORE — тактичний магазин спорядження: рюкзаки, шоломи, жилети. Надійне спорядження для будь-яких умов.">
+    <meta name="theme-color" content="#0e120c">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e120c'/%3E%3Ctext x='16' y='22' font-size='15' font-weight='700' text-anchor='middle' fill='%23a5c77a' font-family='Arial,sans-serif'%3EFC%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Позначаємо, що JavaScript працює (потрібно для анімацій появи) -->
+    <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+    <a class="skip-link" href="#main">Перейти до змісту</a>
+
+    <div class="topbar">Доставка по Україні · Гарантія виробника · Обмін і повернення</div>
+
+    <!-- ===== Шапка ===== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">FIELDCORE</a>
+
+            <nav class="main-nav" aria-label="Головна навігація">
+                <a href="index.html#home" aria-current="page">Головна</a>
+                <a href="index.html#catalog">Каталог</a>
+                <a href="index.html#about">Про нас</a>
+                <a href="index.html#contacts">Контакти</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="icon-button" href="index.html#catalog-search" data-focus-search aria-label="Пошук товарів">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                </a>
+                <button id="cart-button" class="cart-button" type="button" aria-controls="cart-modal" aria-expanded="false" aria-label="Кошик, товарів: 0">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+                    <span class="cart-label">Кошик</span>
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- ===== Головний екран ===== -->
+        <section class="hero" id="home">
+            <div class="hero-main">
+                <div class="container">
+                    <div class="hero-content">
+                        <p class="eyebrow">ПОЛЬОВЕ СПОРЯДЖЕННЯ</p>
+                        <h1>ГОТОВИЙ ДО БУДЬ-ЯКИХ УМОВ</h1>
+                        <p class="hero-text">Тактичне спорядження для тих, хто обирає надійність.</p>
+                        <div class="hero-buttons">
+                            <a class="btn btn-primary btn-large" href="#catalog">ПЕРЕГЛЯНУТИ КАТАЛОГ</a>
+                            <a class="btn btn-outline btn-large" href="#about">ПРО БРЕНД</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perks">
+                <div class="container perks-inner">
+                    <div class="perk">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                        <span>Доставка по Україні</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z"/></svg>
+                        <span>Гарантія виробника</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"/><path d="M20 4v5h-5"/><path d="M20 12a8 8 0 0 1-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg>
+                        <span>Обмін і повернення</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Каталог ===== -->
+        <section class="section section-alt" id="catalog" aria-labelledby="catalog-title">
+            <div class="container">
+                <div class="section-head section-head-row">
+                    <div>
+                        <p class="eyebrow">01 / КАТАЛОГ</p>
+                        <h2 id="catalog-title">ПОПУЛЯРНІ ТОВАРИ</h2>
+                        <p class="section-lead">Спорядження, якому можна довіряти.</p>
+                    </div>
+                    <div class="chips" id="category-chips" role="group" aria-label="Фільтр за категорією"></div>
+                </div>
+
+                <div class="toolbar">
+                    <div class="field toolbar-search">
+                        <label for="catalog-search">Пошук за назвою</label>
+                        <input id="catalog-search" type="search" placeholder="Наприклад, рюкзак" autocomplete="off">
+                    </div>
+                    <div class="field toolbar-sort">
+                        <label for="catalog-sort">Сортування</label>
+                        <select id="catalog-sort">
+                            <option value="default">За замовчуванням</option>
+                            <option value="price-asc">Спочатку дешевші</option>
+                            <option value="price-desc">Спочатку дорожчі</option>
+                            <option value="name">За назвою (А–Я)</option>
+                        </select>
+                    </div>
+                    <p class="results-count" id="results-count" role="status"></p>
+                </div>
+
+                <div class="products" id="products"></div>
+
+                <div class="catalog-empty" id="catalog-empty" hidden>
+                    <p class="empty-title">Нічого не знайдено.</p>
+                    <p class="muted">Спробуйте змінити пошуковий запит або категорію.</p>
+                    <button class="btn btn-outline" type="button" id="reset-filters">СКИНУТИ ФІЛЬТРИ</button>
+                </div>
+
+                <noscript>
+                    <p class="muted">Для перегляду каталогу потрібно ввімкнути JavaScript у браузері.</p>
+                </noscript>
+            </div>
+        </section>
+
+        <!-- ===== Переваги ===== -->
+        <section class="section" aria-labelledby="why-title">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">02 / ПЕРЕВАГИ</p>
+                    <h2 id="why-title">ЧОМУ FIELDCORE</h2>
+                </div>
+
+                <div class="features">
+                    <div class="feature reveal">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z"/></svg>
+                        <h3>Перевірені матеріали</h3>
+                        <p>Обираємо спорядження, яке витримує польові умови.</p>
+                    </div>
+                    <div class="feature reveal">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>
+                        <h3>Контроль якості</h3>
+                        <p>Кожну позицію перевіряємо перед відправкою.</p>
+                    </div>
+                    <div class="feature reveal">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                        <h3>Швидка доставка</h3>
+                        <p>Надсилаємо замовлення по всій Україні.</p>
+                    </div>
+                    <div class="feature reveal">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/></svg>
+                        <h3>Підтримка</h3>
+                        <p>Допоможемо підібрати спорядження під ваші задачі.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Про нас ===== -->
+        <section class="section section-alt" id="about" aria-labelledby="about-title">
+            <div class="container about-inner">
+                <div class="about-text reveal">
+                    <p class="eyebrow">03 / ПРО НАС</p>
+                    <h2 id="about-title">СПОРЯДЖЕННЯ, ЯКОМУ МОЖНА ДОВІРЯТИ</h2>
+                    <p>FIELDCORE — тактичний інтернет-магазин, який збирає в одному місці рюкзаки, захист і жилети для польових умов. Ми обираємо спорядження за практичністю: міцні матеріали, продумані кріплення, комфорт під довгим навантаженням.</p>
+                    <p class="muted">Наша мета — зрозумілий каталог, чесні описи та зручне оформлення замовлення без зайвих кроків.</p>
+                    <a class="btn btn-outline btn-large" href="#contacts">ЗВ'ЯЗАТИСЯ З НАМИ</a>
+                </div>
+                <div class="about-photo reveal" role="img" aria-label="Боєць у лісі у польовому спорядженні"></div>
+            </div>
+        </section>
+
+        <!-- ===== Контакти ===== -->
+        <section class="section" id="contacts" aria-labelledby="contacts-title">
+            <div class="container contacts-inner">
+                <div class="contacts-text reveal">
+                    <p class="eyebrow">04 / КОНТАКТИ</p>
+                    <h2 id="contacts-title">НАПИШІТЬ НАМ</h2>
+                    <p class="muted">Підкажемо з вибором спорядження та відповімо на питання щодо замовлення.</p>
+
+                    <dl class="contact-list">
+                        <div><dt>ТЕЛЕФОН</dt><dd><a href="tel:+380441234567">+380 44 123 45 67</a></dd></div>
+                        <div><dt>E-MAIL</dt><dd><a href="mailto:info@fieldcore.example">info@fieldcore.example</a></dd></div>
+                        <div><dt>МІСТО</dt><dd>Київ, Україна</dd></div>
+                        <div><dt>ГРАФІК РОБОТИ</dt><dd>Пн–Пт, 9:00–18:00</dd></div>
+                    </dl>
+                </div>
+
+                <form class="card-form reveal" id="contact-form" novalidate>
+                    <div class="field">
+                        <label for="c-name">Ім'я</label>
+                        <input id="c-name" type="text" autocomplete="name" data-validate="name" aria-describedby="c-name-error">
+                        <p class="field-error" id="c-name-error"></p>
+                    </div>
+                    <div class="field">
+                        <label for="c-phone">Телефон</label>
+                        <input id="c-phone" type="tel" autocomplete="tel" data-validate="phone" aria-describedby="c-phone-error">
+                        <p class="field-error" id="c-phone-error"></p>
+                    </div>
+                    <div class="field">
+                        <label for="c-message">Повідомлення</label>
+                        <textarea id="c-message" rows="4" data-validate="message" aria-describedby="c-message-error"></textarea>
+                        <p class="field-error" id="c-message-error"></p>
+                    </div>
+                    <button class="btn btn-primary btn-large" type="submit">НАДІСЛАТИ</button>
+                    <p class="form-status" id="contact-status" role="status"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== Футер ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">FIELDCORE</div>
+                    <p>Тактичне спорядження для тих, хто обирає надійність.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Навігація у футері">
+                    <span class="footer-title">НАВІГАЦІЯ</span>
+                    <a href="index.html#home">Головна</a>
+                    <a href="index.html#catalog">Каталог</a>
+                    <a href="index.html#about">Про нас</a>
+                    <a href="index.html#contacts">Контакти</a>
+                </nav>
+            </div>
+            <p class="footer-bottom">© <span data-year>2026</span> FIELDCORE. Усі права захищено.</p>
+        </div>
+    </footer>
+
+    <!-- ===== Кошик (бокова панель) ===== -->
+    <div id="cart-modal" class="cart-modal" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+        <div class="cart-overlay" data-close-cart></div>
+
+        <aside class="cart-panel">
+            <div class="cart-head">
+                <h2 id="cart-title"><span id="cart-title-text">ВАШ КОШИК</span> <span id="cart-title-count" class="accent">(0)</span></h2>
+                <button id="close-cart" class="icon-button" type="button" aria-label="Закрити кошик">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+            </div>
+
+            <!-- Екран 1: список товарів -->
+            <div class="cart-view" id="cart-view-cart">
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-foot">
+                    <div class="cart-total">
+                        <span>Разом</span>
+                        <strong><span id="cart-total">0</span> грн</strong>
+                    </div>
+                    <button class="btn btn-primary btn-large" type="button" id="checkout-button">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+                    <button class="btn btn-outline" type="button" data-close-cart>Продовжити покупки</button>
+                </div>
+            </div>
+
+            <!-- Екран 2: оформлення замовлення -->
+            <div class="cart-view" id="cart-view-checkout" hidden>
+                <form class="checkout-form" id="checkout-form" novalidate>
+                    <p class="checkout-summary" id="checkout-summary"></p>
+                    <div class="field">
+                        <label for="o-name">Ім'я</label>
+                        <input id="o-name" type="text" autocomplete="name" data-validate="name" aria-describedby="o-name-error">
+                        <p class="field-error" id="o-name-error"></p>
+                    </div>
+                    <div class="field">
+                        <label for="o-phone">Телефон</label>
+                        <input id="o-phone" type="tel" autocomplete="tel" data-validate="phone" aria-describedby="o-phone-error">
+                        <p class="field-error" id="o-phone-error"></p>
+                    </div>
+                    <div class="field">
+                        <label for="o-address">Місто та спосіб доставки</label>
+                        <input id="o-address" type="text" autocomplete="street-address" placeholder="Київ, відділення №1" data-validate="address" aria-describedby="o-address-error">
+                        <p class="field-error" id="o-address-error"></p>
+                    </div>
+                    <p class="muted small">Навчальний проєкт: замовлення нікуди не надсилається.</p>
+                    <div class="checkout-buttons">
+                        <button class="btn btn-primary btn-large" type="submit">ПІДТВЕРДИТИ ЗАМОВЛЕННЯ</button>
+                        <button class="btn btn-outline" type="button" id="back-to-cart">Назад до кошика</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Екран 3: замовлення прийнято -->
+            <div class="cart-view" id="cart-view-success" hidden>
+                <div class="success-box">
+                    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg>
+                    <h3 id="success-title" tabindex="-1"><span id="order-number">Замовлення прийнято</span></h3>
+                    <p id="order-summary"></p>
+                    <p class="muted">Це навчальний проєкт, тому справжнього замовлення не створено.</p>
+                    <button class="btn btn-primary btn-large" type="button" id="success-close">ЗАКРИТИ</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/ui.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
